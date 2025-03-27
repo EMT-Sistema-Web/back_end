@@ -1,7 +1,7 @@
 # back_end
 Back-end em Python. Utilizado Djando e Machbase.
 
-#### 1. Certifique-se de que o Python e Pip está instalado/atualiado na máquina
+#### 1. Certifique-se de que o Python e o Pip estão instalados/atualiados na máquina
 
 #### 2. python -m venv venv
 
