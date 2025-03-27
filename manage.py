@@ -4,36 +4,36 @@ import os
 import sys
 
 from django.db import models
-from .connector import MachbaseConnection
+#from .connector import MachbaseConnection
 
-class MachbaseManager(models.Manager):
-    def __init__(self, table_name=None, *args, **kwargs):
-        self.table_name = table_name
-        super().__init__(*args, **kwargs)
-
-    def get_queryset(self):
-        # Retorna um queryset vazio pois substituiremos todos os métodos
-        return super().get_queryset().none()
-
-    def filter(self, **kwargs):
-        """Simula o método filter do QuerySet"""
-        where_clause = ' AND '.join([f"{k} = ?" for k in kwargs.keys()])
-        query = f"SELECT * FROM {self.table_name}"
-        if where_clause:
-            query += f" WHERE {where_clause}"
-        
-        conn = MachbaseConnection.get_connection()
-        cursor = conn.cursor()
-        cursor.execute(query, list(kwargs.values()))
-        
-        results = []
-        for row in cursor:
-            results.append(self.model.from_db_row(row))
-        return results
-
-    def all(self):
-        """Retorna todos os registros"""
-        return self.filter()
+#class MachbaseManager(models.Manager):
+#    def __init__(self, table_name=None, *args, **kwargs):
+#        self.table_name = table_name
+#        super().__init__(*args, **kwargs)
+#
+#    def get_queryset(self):
+#        # Retorna um queryset vazio pois substituiremos todos os métodos
+#        return super().get_queryset().none()
+#
+#    def filter(self, **kwargs):
+#        """Simula o método filter do QuerySet"""
+#        where_clause = ' AND '.join([f"{k} = ?" for k in kwargs.keys()])
+#        query = f"SELECT * FROM {self.table_name}"
+#        if where_clause:
+#            query += f" WHERE {where_clause}"
+#        
+#        conn = MachbaseConnection.get_connection()
+#        cursor = conn.cursor()
+#        cursor.execute(query, list(kwargs.values()))
+#        
+#        results = []
+#        for row in cursor:
+#            results.append(self.model.from_db_row(row))
+#        return results
+#
+#    def all(self):
+#        """Retorna todos os registros"""
+#        return self.filter()
     
 def main():
     """Run administrative tasks."""
