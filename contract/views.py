@@ -8,11 +8,11 @@ def valid_date(self):
                 self.save()
 
 def valid_contract(self):
-    if not self.cliente or not self.maquina:
+    if not self.cliente or not self.machine:
         self.valido = False
     self.validar_data()  # Verifica a data de expiração
     self.save()
     
 def __str__(self):
-        return f"Contrato {self.tipo} - Cliente: {self.cliente.nome} - Máquina: {self.maquina.nome}"
+        return f"Contrato {self.type} - Cliente: {self.client.name} - Máquina: {self.machine.name}"
 
