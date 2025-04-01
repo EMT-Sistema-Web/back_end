@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from services import mqtt_service
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("inicio/", include("inicio.urls")),
     path("machine/", include("machine.urls")),
+    path('publicar/', mqtt_service.publicar_mensagem, name='publicar_mensagem'),
 ]
