@@ -20,7 +20,8 @@ from services import mqtt_service
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("inicio/", include("inicio.urls")),
+    path("users/", include("users.urls")),
     path("machine/", include("machine.urls")),
     path('publicar/', mqtt_service.publicar_mensagem, name='publicar_mensagem'),
+    path('api-auth/', include('rest_framework.urls')),
 ]
