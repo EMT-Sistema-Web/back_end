@@ -19,11 +19,11 @@ class TemperatureReading(models.Model):
 
     
 class Temperature(models.Model):
-    type = models.CharField(option=[('tempCoolant'), ('tempKeyer'), ('tempCoil')], max_length=20)
+    type = models.CharField(choices=[('tempCoolant', 'tempCoolant'), ('tempKeyer', 'tempKeyer'), ('tempCoil', 'tempCoil')], max_length=20)
     value = TemperatureReading
     
 class Machine(models.Model):
-    id = models.CharField(max_length=200)
+    identificador = models.CharField(max_length=200)
     reg_date = models.DateTimeField("date registered")
     pulses_amount = models.IntegerField()
     use_time = models.DateTimeField("date registered")
