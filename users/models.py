@@ -6,8 +6,11 @@ from django.utils.translation import gettext_lazy as _
 
 class CustomUser(AbstractUser):
     USER_TYPE_CHOICES = (
-        (1, 'Admin'),
-        (2, 'Regular User'),
+        (1, 'Dev Admin'),
+        (2, 'Magvia Admin'),
+        (3, 'Regular User'),
+        (4, 'Patient User'),
+        
     )
     
     user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES, default=2)
