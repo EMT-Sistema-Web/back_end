@@ -23,12 +23,14 @@ class Temperature(models.Model):
     value = TemperatureReading
     
 class Machine(models.Model):
-    identificador = models.CharField(max_length=200)
+    identifier = models.CharField(max_length=200)
     reg_date = models.DateTimeField("date registered")
     pulses_amount = models.IntegerField()
+    sequence_amount = models.IntegerField()
     use_time = models.DateTimeField("date registered")
     status = models.BooleanField(default=False)
     temperatures = models.ManyToManyField(Temperature)
+    treatment_current = models.IntegerField()
     treatment_amount = models.IntegerField()
     
 
